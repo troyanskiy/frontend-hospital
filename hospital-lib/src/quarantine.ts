@@ -1,31 +1,16 @@
 import { PatientsRegister } from './patientsRegister';
+import { StateMachine } from './state-machine';
+import { Drug, State } from './state-machine.types';
 
-export const possibleStates = ["F", "H", "D", "T", "X"] as const;
-const possibleDrugs = ["I", "An", "P", "As"] as const;
-
-export type State = typeof possibleStates[number];
-export type Drug = typeof possibleDrugs[number];
-
-type TriggerFunction = (x: Drug[]) => boolean;
-export type Trigger = Drug[] | TriggerFunction;
-
-interface Rule {
-    sources: State[];
-    target: State;
-    triggers: Trigger[]
-}
 
 function isInsulinMissed(drugsGiven: Drug[]): boolean {
     return !drugsGiven.includes("I");
 }
 
+export class Quarantine {
 
-function isSubsetOf<T>(set: T[], subset: T[]): boolean {
-    return subset.every(val => set.includes(val));
-}
-
-class StateMachine {
-    rules: Rule[] = [
+    drugsGiven: Drug[] = [];
+    stateMachine = new StateMachine([
         {
             sources: ['F', 'H', 'D', 'T'],
             target: 'X',
@@ -51,34 +36,7 @@ class StateMachine {
             target: 'H',
             triggers: [["An"]]
         },
-    ];
-
-    getTargetState(source: State, givenDrugs: Drug[]): State {
-        for (const rule of this.rules) {
-            if (rule.sources.includes(source) && this.isDrugsMatchesTriggers(rule.triggers, givenDrugs)) {
-                return rule.target;
-            }
-        }
-        return source;
-    }
-
-    private isDrugsMatchesTriggers(triggers: Trigger[], givenDrugSet: Drug[]): boolean {
-        return triggers.some(trigger => {
-            if (Array.isArray(trigger)) {
-                return isSubsetOf(givenDrugSet, trigger);
-            } else {
-                return trigger(givenDrugSet);
-            }
-        });
-    }
-
-}
-
-
-export class Quarantine {
-
-    drugsGiven: Drug[] = [];
-    stateMachine = new StateMachine();
+    ]);
     patientsAfterTreatment: PatientsRegister;
 
     constructor(private patientsBeforeTreatment: PatientsRegister) {
