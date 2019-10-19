@@ -7,6 +7,7 @@ function isInsulinMissed(drugsGiven: Drug[]): boolean {
     return !drugsGiven.includes("I");
 }
 
+type PatientStatePair = [State, number];
 export class Quarantine {
 
     drugsGiven: Drug[] = [];
@@ -57,18 +58,18 @@ export class Quarantine {
     }
 
     public wait40Days(): void {
-        const diff = this.calculatePatientsStates();
-        this.patientsAfterTreatment = this.convertStates(diff);
+        const patientsStates = this.calculatePatientsStates();
+        this.patientsAfterTreatment = this.convertStates(patientsStates);
 
     }
 
-    calculatePatientsStates(): [State, number][] {
+    calculatePatientsStates(): PatientStatePair[] {
         return Object.entries(this.patientsBeforeTreatment)
-            .map(([state, numberOfPatients]: [State, number]) => [this.stateMachine.getTargetState(state, this.drugsGiven), numberOfPatients]);
+            .map(([state, numberOfPatients]: PatientStatePair) => [this.stateMachine.getTargetState(state, this.drugsGiven), numberOfPatients]);
     }
 
-    convertStates(diff: [State, number][]): PatientsRegister {
-        return diff.reduce((acc, [state, numberOfPatients]: [State, number]) => ({
+    convertStates(diff: PatientStatePair[]): PatientsRegister {
+        return diff.reduce((acc, [state, numberOfPatients]: PatientStatePair) => ({
                 ...acc,
                 [state]: acc[state] + numberOfPatients //here we are sure that acc[state] exists because we initialize with emptyHospital
             }),
