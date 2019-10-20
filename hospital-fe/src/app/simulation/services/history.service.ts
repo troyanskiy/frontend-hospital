@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Simulation } from './quarantine.service';
+import { Observable } from 'rxjs';
+import { bufferCount, scan } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
 
-  private history: Simulation[] = [];
-  private maxHistorySize = environment.historySize;
-
-  constructor() {
-  }
-
-  add(simulation: Simulation) {
-    this.history.push(simulation);
-    if (this.history.length > this.maxHistorySize) {
-      this.history.shift();
-    }
+  getHistory<T>(dataSource$: Observable<T>, historySize = environment.historySize): Observable<T[]> {
+    return dataSource$.pipe(
+      scan((acc: T[], curr: T) => {
+        const res = acc.concat(curr);
+        if (res.length > historySize) {
+          res.shift();
+        }
+        return res;
+      }, [])
+    );
   }
 }

@@ -22,7 +22,6 @@ export class QuarantineService {
   }
 
   runSimulation(): Observable<Simulation> {
-    console.log('new simu');
     const currentDrugs$ = this.drugsService.getDrugs();
     const currentPatients$ = this.patientDataService.getGroupedPatients();
     return forkJoin(currentDrugs$, currentPatients$).pipe(

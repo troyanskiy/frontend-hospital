@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { QuarantineService, Simulation } from './simulation/services/quarantine.service';
-import { share } from 'rxjs/operators';
+import { HistoryService } from './simulation/services/history.service';
+import { switchMap, switchMapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,16 @@ import { share } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'hospital-fe';
-  results$: Observable<Simulation>;
+  history$: Observable<Simulation[]>;
+  private newSimulationClicks = new Subject();
 
-  constructor(private quarantineService: QuarantineService) {
-
+  constructor(private quarantineService: QuarantineService,
+              private historyService: HistoryService) {
+    const result$ = this.newSimulationClicks.pipe(switchMapTo(quarantineService.runSimulation()));
+    this.history$ = this.historyService.getHistory(result$, 2);
   }
 
   runSimulation() {
-    this.results$ = this.quarantineService.runSimulation().pipe(share());
+    this.newSimulationClicks.next();
   }
 }

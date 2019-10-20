@@ -4,10 +4,10 @@
 >New simulation
 </button>
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
-<ng-container *ngIf="results$|async as results">
+<ng-container *ngIf="history$|async as history">
 
 
-  <pre>{{results|json}}</pre>
+  <pre>{{history|json}}</pre>
 
 
   <app-simulation expanded="true"></app-simulation>
