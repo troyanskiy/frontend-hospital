@@ -8,9 +8,9 @@ function isInsulinMissed(drugsGiven: Drug[]): boolean {
 }
 
 type PatientStatePair = [State, number];
+
 export class Quarantine {
 
-    drugsGiven: Drug[] = [];
     stateMachine = new StateMachine([
         {
             sources: ['F', 'H', 'D', 'T'],
@@ -38,7 +38,8 @@ export class Quarantine {
             triggers: [["An"]]
         },
     ]);
-    patientsAfterTreatment: PatientsRegister;
+    private drugsGiven: Drug[] = [];
+    private patientsAfterTreatment: PatientsRegister;
 
     constructor(private patientsBeforeTreatment: PatientsRegister) {
         this.patientsAfterTreatment = { ...patientsBeforeTreatment };
@@ -63,12 +64,12 @@ export class Quarantine {
 
     }
 
-    calculatePatientsStates(): PatientStatePair[] {
+    private calculatePatientsStates(): PatientStatePair[] {
         return Object.entries(this.patientsBeforeTreatment)
             .map(([state, numberOfPatients]: PatientStatePair) => [this.stateMachine.getTargetState(state, this.drugsGiven), numberOfPatients]);
     }
 
-    convertStates(diff: PatientStatePair[]): PatientsRegister {
+    private convertStates(diff: PatientStatePair[]): PatientsRegister {
         return diff.reduce((acc, [state, numberOfPatients]: PatientStatePair) => ({
                 ...acc,
                 [state]: acc[state] + numberOfPatients //here we are sure that acc[state] exists because we initialize with emptyHospital
