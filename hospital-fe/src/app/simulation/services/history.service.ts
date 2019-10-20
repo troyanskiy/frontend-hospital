@@ -11,9 +11,9 @@ export class HistoryService {
   getHistory<T>(dataSource$: Observable<T>, historySize = environment.historySize): Observable<T[]> {
     return dataSource$.pipe(
       scan((acc: T[], curr: T) => {
-        const res = acc.concat(curr);
+        const res = [curr].concat(acc);
         if (res.length > historySize) {
-          res.shift();
+          res.pop();
         }
         return res;
       }, [])
