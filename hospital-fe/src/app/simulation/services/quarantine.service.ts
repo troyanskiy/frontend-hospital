@@ -7,8 +7,10 @@ import { PatientsRegister, Quarantine } from 'hospital-lib';
 import { Drug } from 'hospital-lib/dist/state-machine.types';
 
 export interface Simulation {
-  before: PatientsRegister;
-  after: PatientsRegister;
+  patients: {
+    before: PatientsRegister;
+    after: PatientsRegister;
+  };
   drugs: Drug[];
 }
 
@@ -30,9 +32,11 @@ export class QuarantineService {
           quarantine.setDrugs(drugs);
           quarantine.wait40Days();
           return {
-            before: patientsBefore,
+            patients: {
+              before: patientsBefore,
+              after: quarantine.report()
+            },
             drugs,
-            after: quarantine.report()
           };
         }
       )));
