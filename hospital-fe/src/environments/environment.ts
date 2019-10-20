@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  server: 'http://127.0.0.1:7200'
+  server: 'http://127.0.0.1:7200',
+  historySize: 5,
 };
 
 /*
