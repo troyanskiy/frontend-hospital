@@ -1,0 +1,13 @@
+
+<mat-expansion-panel [expanded]="expanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <app-drugs-short></app-drugs-short>
+    </mat-panel-title>
+    <mat-panel-description>
+      <app-states-diff-short></app-states-diff-short>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-results></app-results>
+  <strong>Drugs given:</strong> {{["As", "I", "An"].join(',')}}
+</mat-expansion-panel>
