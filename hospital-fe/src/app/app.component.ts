@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {Quarantine} from 'hospital-lib';
+import { Observable } from 'rxjs';
+import { Drug } from 'hospital-lib/dist/state-machine.types';
+import { DrugsService } from './simulation/services/drugs.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,13 @@ import {Quarantine} from 'hospital-lib';
 })
 export class AppComponent {
   title = 'hospital-fe';
+  currentDrugs$: Observable<Drug[]>;
+
+  constructor(private drugsService: DrugsService) {
+  }
 
   runNewSimulation() {
     console.log('new simu');
-    Quarantine
+    this.currentDrugs$ = this.drugsService.getDrugs();
   }
 }

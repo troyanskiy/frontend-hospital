@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { DrugsShortComponent } from './simulation/drugs-short/drugs-short.component';
 import { StatesDiffShortComponent } from './simulation/states-diff-short/states-diff-short.component';
 import { ResultsComponent } from './simulation/results/results.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ResultsComponent } from './simulation/results/results.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
