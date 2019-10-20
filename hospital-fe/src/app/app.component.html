@@ -3,14 +3,17 @@
         (click)="runSimulation()"
 >New simulation
 </button>
-
-<pre>{{results$|async|json}}</pre>
-
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
+<ng-container *ngIf="results$|async as results">
 
-<app-simulation expanded="true"></app-simulation>
-<app-simulation></app-simulation>
-<app-simulation></app-simulation>
-<app-simulation></app-simulation>
-<app-simulation></app-simulation>
-<app-simulation></app-simulation>
+
+  <pre>{{results|json}}</pre>
+
+
+  <app-simulation expanded="true"></app-simulation>
+  <app-simulation></app-simulation>
+  <app-simulation></app-simulation>
+  <app-simulation></app-simulation>
+  <app-simulation></app-simulation>
+  <app-simulation></app-simulation>
+</ng-container>
