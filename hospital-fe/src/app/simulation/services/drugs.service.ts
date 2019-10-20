@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment'; //todo try to d
 })
 export class DrugsService {
 
-  private url = environment.server + '/patients';
+  private url = environment.server + '/drugs';
 
   constructor(private http: HttpClient) {
   }
