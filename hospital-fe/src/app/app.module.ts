@@ -10,7 +10,7 @@ import { SimulationComponent } from './simulation/simulation.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DrugsShortComponent } from './simulation/drugs-short/drugs-short.component';
 import { StatesDiffShortComponent } from './simulation/states-diff-short/states-diff-short.component';
-import { ResultsComponent } from './simulation/results/results.component';
+import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     SimulationComponent,
     DrugsShortComponent,
     StatesDiffShortComponent,
-    ResultsComponent
+    PatientsStatesBeforeAndAfterComponent
   ],
   imports: [
     BrowserModule,
