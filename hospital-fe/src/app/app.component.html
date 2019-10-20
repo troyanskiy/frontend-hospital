@@ -1,4 +1,8 @@
-<button mat-flat-button color="primary">New simulation</button>
+<button mat-flat-button
+        color="primary"
+        (click)="runNewSimulation()"
+>New simulation
+</button>
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
 
 <app-simulation expanded="true"></app-simulation>
@@ -6,4 +10,4 @@
 <app-simulation></app-simulation>
 <app-simulation></app-simulation>
 <app-simulation></app-simulation>
-<app-simulation> </app-simulation>
+<app-simulation></app-simulation>

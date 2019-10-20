@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Quarantine } from '../../../../hospital-lib/src';
 
 @Component({
   selector: 'app-simulation',
@@ -13,5 +14,4 @@ export class SimulationComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
