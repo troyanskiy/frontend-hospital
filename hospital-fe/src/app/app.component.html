@@ -1,11 +1,9 @@
 <button mat-flat-button
         color="primary"
-        (click)="runNewSimulation()"
+        (click)="runSimulation()"
 >New simulation
 </button>
 
-<pre>{{currentDrugs$|async|json}}</pre>
-<pre>{{currentPatients$|async|json}}</pre>
 <pre>{{results$|async|json}}</pre>
 
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>

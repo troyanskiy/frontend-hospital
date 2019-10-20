@@ -5,6 +5,7 @@ import { DrugsService } from './simulation/services/drugs.service';
 import { PatientsRegister, Quarantine } from 'hospital-lib';
 import { PatientsDataService } from './simulation/services/patients-data.service';
 import { map } from 'rxjs/operators';
+import { QuarantineService, Simulation } from './simulation/services/quarantine.service';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +14,15 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'hospital-fe';
-  currentDrugs$: Observable<Drug[]>;
-  currentPatients$: Observable<PatientsRegister>;
-  results$: Observable<PatientsRegister>;
+  results$: Observable<Simulation>;
 
 
-  constructor(private drugsService: DrugsService,
-              private patientDataService: PatientsDataService) {
+  constructor(private quarantineService: QuarantineService) {
+
   }
 
-  runNewSimulation() {
-    console.log('new simu');
-    this.currentDrugs$ = this.drugsService.getDrugs();
-    this.currentPatients$ = this.patientDataService.getGroupedPatients();
-    this.results$ =  forkJoin(this.currentDrugs$, this.currentPatients$).pipe(
-      (map(([drugs, patients]) => {
-          const quarantine = new Quarantine(patients);
-          quarantine.setDrugs(drugs);
-          debugger;
-          quarantine.wait40Days();
-          return quarantine.report();
-        }
-      )));
+
+  runSimulation() {
+    this.results$ = this.quarantineService.runSimulation();
   }
 }

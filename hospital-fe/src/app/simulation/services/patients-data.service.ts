@@ -24,8 +24,6 @@ export class PatientsDataService {
     return this.getPatients().pipe(
       map(states => {
         console.log(states);
-
-
         const reduced = states.reduce((acc, state) => {
           return {
             ...acc,

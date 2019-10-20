@@ -72,9 +72,9 @@ export class Quarantine {
     private convertStates(diff: PatientStatePair[]): PatientsRegister {
         return diff.reduce((acc, [state, numberOfPatients]: PatientStatePair) => ({
                 ...acc,
-                [state]: acc[state] + numberOfPatients //here we are sure that acc[state] exists because we initialize with emptyHospital
+                [state]: acc[state] ? acc[state] + numberOfPatients : numberOfPatients //here we are sure that acc[state] exists because we initialize with emptyHospital
             }),
-            this.emptyHospital)
+            {} as PatientsRegister)
 
     }
 
