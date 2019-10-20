@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Drug, State } from 'hospital-lib/dist/state-machine.types';
+import { Drug } from 'hospital-lib/dist/state-machine.types';
 import { environment } from '../../../environments/environment';
 import { map, share } from 'rxjs/operators'; //todo try to do cleaner
 

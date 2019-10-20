@@ -1,6 +1,6 @@
-<button mat-flat-button
+<button (click)="runSimulation()"
         color="primary"
-        (click)="runSimulation()"
+        mat-flat-button
 >New simulation
 </button>
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>

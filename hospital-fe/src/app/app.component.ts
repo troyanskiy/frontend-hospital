@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { QuarantineService, Simulation } from './simulation/services/quarantine.service';
 import { HistoryService } from './simulation/services/history.service';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { switchMapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',

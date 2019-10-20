@@ -31,7 +31,7 @@ export class PatientsDataService {
 
           };
         }, {});
-        console.log(reduced)
+        console.log(reduced);
         return reduced;
       }),
       share());

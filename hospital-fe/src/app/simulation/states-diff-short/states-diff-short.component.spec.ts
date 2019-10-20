@@ -8,9 +8,9 @@ describe('StatesDiffShortComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatesDiffShortComponent ]
+      declarations: [StatesDiffShortComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
