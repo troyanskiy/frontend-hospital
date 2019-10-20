@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Simulation } from './services/quarantine.service';
 
 @Component({
   selector: 'app-simulation',
@@ -9,6 +10,8 @@ export class SimulationComponent implements OnInit {
   @Input()
   expanded: boolean;
 
+  @Input()
+  simulation: Simulation;
   constructor() {
   }
 
