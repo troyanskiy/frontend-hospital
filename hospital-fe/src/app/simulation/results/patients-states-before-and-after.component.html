@@ -1,14 +1,17 @@
-<table>
-  <tr>
-    <th>State</th>
-    <th>Before</th>
-    <th>After</th>
+<table class="mat-table mat-elevation-z8">
+  <thead role="rowheader">
+  <th class="mat-header-cell">State</th>
+  <th class="mat-header-cell">Before</th>
+  <th class="mat-header-cell">After</th>
+  </thead>
+  <tbody role="rowgroup">
+  <tr *ngFor="let statItem of patientStates"
+  class="mat-row">
+    <td class="mat-cell" role="gridcell">{{statItem.state}}</td>
+    <td class="mat-cell" role="gridcell">{{statItem.before}}</td>
+    <td class="mat-cell" role="gridcell">{{statItem.after}}</td>
   </tr>
+  </tbody>
 
-  <tr *ngFor="let statItem of patientStates">
-    <td>{{statItem.state}}</td>
-    <td>{{statItem.before}}</td>
-    <td>{{statItem.after}}</td>
-  </tr>
 
 </table>

@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(private quarantineService: QuarantineService,
               private historyService: HistoryService) {
     const result$: Observable<BeforeAfterStatistic> = this.newSimulationClicks.pipe(switchMapTo(quarantineService.runSimulation()));
-    this.history$ = this.historyService.getHistory(result$, 2);
+    this.history$ = this.historyService.getHistory(result$);
   }
 
   runSimulation() {
