@@ -18,7 +18,7 @@ export class DrugsShortComponent implements OnInit {
   ngOnInit() {
     this.drugsFormatted = this.drugs
       .map(drugFullName => drugFullName.substring(0,3))
-      .join(' ,');
+      .join(', ');
   }
 
 }
