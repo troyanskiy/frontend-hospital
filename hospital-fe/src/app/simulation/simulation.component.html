@@ -9,7 +9,6 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   <app-patients-states-before-and-after [patientStates]="simulation.patients"></app-patients-states-before-and-after>
-  <ng-container *ngIf="simulation.drugs.length; else noDrugs"><strong>Drugs given: </strong> {{simulation.drugs.join(', ')}}</ng-container>
-  <ng-template #noDrugs>No drugs were given.</ng-template>
+  <app-drugs-names [drugs]="simulation.drugs" ></app-drugs-names>
 
 </mat-expansion-panel>

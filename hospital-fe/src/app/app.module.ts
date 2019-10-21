@@ -12,6 +12,7 @@ import { DrugsShortComponent } from './simulation/drugs-short/drugs-short.compon
 import { StatesDiffShortComponent } from './simulation/states-diff-short/states-diff-short.component';
 import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     SimulationComponent,
     DrugsShortComponent,
     StatesDiffShortComponent,
-    PatientsStatesBeforeAndAfterComponent
+    PatientsStatesBeforeAndAfterComponent,
+    DrugsNamesComponent
   ],
   imports: [
     BrowserModule,

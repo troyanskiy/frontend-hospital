@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StateDiff } from '../services/quarantine.service';
+import { possibleStates } from 'hospital-lib';
 
 
 @Component({
@@ -11,6 +12,8 @@ export class PatientsStatesBeforeAndAfterComponent implements OnInit {
 
   @Input()
   patientStates: StateDiff[];
+
+  patientStatesFullNames = possibleStates;
 
   constructor() {
   }

@@ -10,7 +10,7 @@
   <tr *ngFor="let statItem of patientStates"
       class="mat-row">
     <td class="mat-cell"
-        role="gridcell">{{statItem.state}}</td>
+        role="gridcell">{{patientStatesFullNames[statItem.state]}}</td>
     <td class="mat-cell"
         role="gridcell">{{statItem.before}}</td>
     <td class="mat-cell"

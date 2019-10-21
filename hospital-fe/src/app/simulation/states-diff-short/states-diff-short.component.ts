@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StateDiff } from '../services/quarantine.service';
 
 @Component({
@@ -6,15 +6,8 @@ import { StateDiff } from '../services/quarantine.service';
   templateUrl: './states-diff-short.component.html',
   styleUrls: ['./states-diff-short.component.scss']
 })
-export class StatesDiffShortComponent implements OnInit {
+export class StatesDiffShortComponent {
 
   @Input()
   patientStates: StateDiff[];
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
 }

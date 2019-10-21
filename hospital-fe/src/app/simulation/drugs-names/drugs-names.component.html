@@ -1,0 +1,4 @@
+<ng-container *ngIf="drugs.length; else noDrugs">
+  <strong>Drugs given: </strong> {{drugsFullNames}}
+</ng-container>
+<ng-template #noDrugs>No drugs were given.</ng-template>

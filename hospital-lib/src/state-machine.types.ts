@@ -5,6 +5,8 @@ export const possibleStates = {
     T: 'Tuberculosis',
     X: 'Dead'
 };
+
+
 export const possibleDrugs = {
     I: 'Insulin',
     An: 'Antibiotic',
