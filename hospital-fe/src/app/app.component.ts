@@ -5,7 +5,7 @@ import {
   QuarantineService
 } from './simulation/services/quarantine.service';
 import { HistoryService } from './simulation/services/history.service';
-import { filter, switchMapTo, takeUntil } from 'rxjs/operators';
+import { filter, partition, switchMapTo, takeUntil } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
@@ -28,10 +28,11 @@ export class AppComponent {
   }
 
   setUpStartStopEvents(): Observable<void> {
-    const autoModeStoppedClicks$ = this.autoMode$.pipe(filter(evt => !evt.checked));
-    const intervalThatStops$ = interval(1000).pipe(takeUntil(autoModeStoppedClicks$));
-    const autoModeStartingTrigger$ = this.autoMode$.pipe(
-      filter(evt => evt.checked),
+    const [autoModeStartClicks$, autoModeStopClicks$] = partition((evt: MatSlideToggleChange) => evt.checked)(this.autoMode$);
+    const intervalThatStops$ = interval(1000).pipe(
+      takeUntil(autoModeStopClicks$)
+    );
+    const autoModeStartingTrigger$ = autoModeStartClicks$.pipe(
       switchMapTo(intervalThatStops$),
     );
     return merge<void>(this.newSimulationClicks$, autoModeStartingTrigger$);
