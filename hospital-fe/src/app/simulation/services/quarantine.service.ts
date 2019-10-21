@@ -4,14 +4,18 @@ import { PatientsDataService } from './patients-data.service';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PatientsRegister, Quarantine } from 'hospital-lib';
-import { Drug } from 'hospital-lib/dist/state-machine.types';
+import { Drug, State } from 'hospital-lib/dist/state-machine.types';
 
-export interface Simulation {
-  patients: {
-    before: PatientsRegister;
-    after: PatientsRegister;
-  };
+
+export interface StateDiff {
+  state: State;
+  before: number;
+  after: number;
+}
+
+export interface BeforeAfterStatistic {
   drugs: Drug[];
+  patients: StateDiff[];
 }
 
 @Injectable({
@@ -23,7 +27,7 @@ export class QuarantineService {
               private patientDataService: PatientsDataService) {
   }
 
-  runSimulation(): Observable<Simulation> {
+  runSimulation(): Observable<BeforeAfterStatistic> {
     const currentDrugs$ = this.drugsService.getDrugs();
     const currentPatients$ = this.patientDataService.getGroupedPatients();
     return forkJoin(currentDrugs$, currentPatients$).pipe(
@@ -31,14 +35,33 @@ export class QuarantineService {
           const quarantine = new Quarantine(patientsBefore);
           quarantine.setDrugs(drugs);
           quarantine.wait40Days();
-          return {
-            patients: {
-              before: patientsBefore,
-              after: quarantine.report()
-            },
-            drugs,
-          };
+          return this.mapToBasArray(patientsBefore, quarantine.report(), drugs);
         }
       )));
+  }
+
+  private mapToBasArray(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {
+    const beforePairs: [State, number][] = Object.entries(patientsBefore) as [State, number][];
+    const patientsAfterCopy = { ...patientsAfter };
+    const initialStatesHistory = beforePairs.map(([beforeState, beforeNumber]) => {
+      const afterNumber = patientsAfter[beforeState] || 0;
+      delete patientsAfterCopy[beforeState];
+      return {
+        state: beforeState,
+        before: beforeNumber,
+        after: afterNumber
+      };
+    });
+    const newStatesPairs: [State, number][] = Object.entries(patientsAfterCopy) as [State, number][];
+    const patients = initialStatesHistory.concat(newStatesPairs.map(([afterState, afterNumber]) => ({
+        state: afterState,
+        before: patientsBefore[afterState] || 0,
+        after: afterNumber
+      }
+    )));
+    return {
+      drugs,
+      patients
+    };
   }
 }

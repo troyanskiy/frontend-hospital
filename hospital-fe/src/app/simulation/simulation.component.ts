@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Simulation } from './services/quarantine.service';
+import { BeforeAfterStatistic } from './services/quarantine.service';
 
 @Component({
   selector: 'app-simulation',
@@ -11,7 +11,8 @@ export class SimulationComponent implements OnInit {
   expanded: boolean;
 
   @Input()
-  simulation: Simulation;
+  simulation: BeforeAfterStatistic;
+
   constructor() {
   }
 

@@ -4,29 +4,11 @@
     <th>Before</th>
     <th>After</th>
   </tr>
-  <tr>
-    <td>Tuberculosis</td>
-    <td>4</td>
-    <td>6</td>
+
+  <tr *ngFor="let statItem of patientStates">
+    <td>statItem.state</td>
+    <td>statItem.before</td>
+    <td>statItem.after</td>
   </tr>
-  <tr>
-    <td>Fever</td>
-    <td>0</td>
-    <td>2</td>
-  </tr>
-  <tr>
-    <td>Diabetes</td>
-    <td>5</td>
-    <td>5</td>
-  </tr>
-  <tr>
-    <td>Death</td>
-    <td>3</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>Healthy</td>
-    <td>3</td>
-    <td>3</td>
-  </tr>
+
 </table>

@@ -5,11 +5,7 @@
 </button>
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
 <ng-container *ngIf="history$|async as history">
-
-
   <pre>{{history|json}}</pre>
-
-
   <app-simulation expanded="true"></app-simulation>
   <app-simulation></app-simulation>
   <app-simulation></app-simulation>

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PatientsRegister } from 'hospital-lib';
+import { State } from 'hospital-lib/dist/state-machine.types';
+import { BeforeAfterStatistic, StateDiff } from '../services/quarantine.service';
+
 
 @Component({
   selector: 'app-patients-states-before-and-after',
@@ -9,10 +12,7 @@ import { PatientsRegister } from 'hospital-lib';
 export class PatientsStatesBeforeAndAfterComponent implements OnInit {
 
   @Input()
-  patientStates: {
-    before: PatientsRegister;
-    after: PatientsRegister;
-  };
+  patientStates: StateDiff[];
 
   constructor() {
   }
