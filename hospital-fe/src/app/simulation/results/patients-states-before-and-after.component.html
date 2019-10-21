@@ -1,15 +1,20 @@
 <table class="mat-table">
   <thead role="rowheader">
-  <th class="mat-header-cell">State</th>
-  <th class="mat-header-cell">Before</th>
-  <th class="mat-header-cell">After</th>
+  <tr class="mat-row">
+    <th class="mat-header-cell">State</th>
+    <th class="mat-header-cell">Before</th>
+    <th class="mat-header-cell">After</th>
+  </tr>
   </thead>
   <tbody role="rowgroup">
   <tr *ngFor="let statItem of patientStates"
-  class="mat-row">
-    <td class="mat-cell" role="gridcell">{{statItem.state}}</td>
-    <td class="mat-cell" role="gridcell">{{statItem.before}}</td>
-    <td class="mat-cell" role="gridcell">{{statItem.after}}</td>
+      class="mat-row">
+    <td class="mat-cell"
+        role="gridcell">{{statItem.state}}</td>
+    <td class="mat-cell"
+        role="gridcell">{{statItem.before}}</td>
+    <td class="mat-cell"
+        role="gridcell">{{statItem.after}}</td>
   </tr>
   </tbody>
 
