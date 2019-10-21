@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { interval, Observable, Subject } from 'rxjs';
+import { interval, merge, Observable, Subject } from 'rxjs';
 import {
   BeforeAfterStatistic,
   QuarantineService
@@ -23,21 +23,18 @@ export class AppComponent {
 
   constructor(private quarantineService: QuarantineService,
               private historyService: HistoryService) {
-    const autoModeStoppingTrigger$ = this.autoMode$.pipe(filter(evt => !evt.checked));
+    const result$: Observable<BeforeAfterStatistic> = this.setUpStartStopEvents().pipe(switchMapTo(quarantineService.runSimulation()));
+    this.history$ = this.historyService.getHistory(result$);
+  }
 
+  setUpStartStopEvents(): Observable<void> {
+    const autoModeStoppedClicks$ = this.autoMode$.pipe(filter(evt => !evt.checked));
+    const intervalThatStops$ = interval(1000).pipe(takeUntil(autoModeStoppedClicks$));
     const autoModeStartingTrigger$ = this.autoMode$.pipe(
       filter(evt => evt.checked),
-      switchMapTo(interval(200)),
-      takeUntil(autoModeStoppingTrigger$),
+      switchMapTo(intervalThatStops$),
     );
-
-    // const result$ = autoModeStartingTrigger$.pipe(
-    //   switchMapTo(interval(1000).pipe(mapTo(quarantineService.runSimulation()))),
-    //   takeUntil(autoModeStoppingTrigger$)
-    // );
-    // const result$: Observable<BeforeAfterStatistic> = this.newSimulationClicks$.pipe(switchMapTo(quarantineService.runSimulation()));
-    const result$: Observable<BeforeAfterStatistic> = autoModeStartingTrigger$.pipe(switchMapTo(quarantineService.runSimulation()));
-    this.history$ = this.historyService.getHistory(result$);
+    return merge<void>(this.newSimulationClicks$, autoModeStartingTrigger$);
   }
 
   runSimulation() {
