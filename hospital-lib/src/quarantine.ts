@@ -64,6 +64,10 @@ export class Quarantine {
 
     }
 
+    public report(): PatientsRegister {
+        return this.patientsAfterTreatment;
+    }
+
     private calculatePatientsStates(): PatientStatePair[] {
         return Object.entries(this.patientsBeforeTreatment)
             .map(([state, numberOfPatients]: PatientStatePair) => [this.stateMachine.getTargetState(state, this.drugsGiven), numberOfPatients]);
@@ -72,14 +76,10 @@ export class Quarantine {
     private convertStates(diff: PatientStatePair[]): PatientsRegister {
         return diff.reduce((acc, [state, numberOfPatients]: PatientStatePair) => ({
                 ...acc,
-                [state]: acc[state] ? acc[state] + numberOfPatients : numberOfPatients //here we are sure that acc[state] exists because we initialize with emptyHospital
+                [state]: acc[state] ? acc[state] + numberOfPatients : numberOfPatients
             }),
-            {} as PatientsRegister)
+            this.emptyHospital)
 
-    }
-
-    public report(): PatientsRegister {
-        return this.patientsAfterTreatment;
     }
 
 }

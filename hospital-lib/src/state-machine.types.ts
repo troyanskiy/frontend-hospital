@@ -1,11 +1,11 @@
-const possibleStates = {
+export const possibleStates = {
     F: 'Fever',
     H: 'Healthy',
     D: 'Diabetes',
     T: 'Tuberculosis',
     X: 'Dead'
 };
-const possibleDrugs = {
+export const possibleDrugs = {
     I: 'Insulin',
     An: 'Antibiotic',
     P: 'Paracetamol',
