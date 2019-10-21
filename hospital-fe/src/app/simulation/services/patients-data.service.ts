@@ -17,7 +17,7 @@ export class PatientsDataService {
 
   getPatients(): Observable<State[]> {
     return this.http.get<string>(this.url).pipe(
-      map((response: string) => response.split(',') as State[]));
+      map((response: string) => response.split(',').filter(x => x !== '') as State[]));
   }
 
   getGroupedPatients(): Observable<PatientsRegister> {

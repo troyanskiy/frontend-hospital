@@ -12,13 +12,18 @@ export class DrugsShortComponent implements OnInit {
   drugs: Drug[];
 
   drugsFormatted: string;
+
   constructor() {
   }
 
   ngOnInit() {
-    this.drugsFormatted = this.drugs
-      .map(drugFullName => drugFullName.substring(0,3))
-      .join(', ');
+    if (this.drugs.length) {
+      this.drugsFormatted = this.drugs
+        .map(drugFullName => drugFullName.substring(0, 3))
+        .join(', ');
+    } else {
+      this.drugsFormatted = 'No drugs given';
+    }
   }
 
 }

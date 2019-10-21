@@ -17,7 +17,7 @@ export class DrugsService {
 
   getDrugs(): Observable<Drug[]> {
     return this.http.get<string>(this.url).pipe(
-      map((response: string) => response.split(',') as Drug[]),
+      map((response: string) => response.split(',').filter(x => x !== '') as Drug[]),
       share());
   }
 }
