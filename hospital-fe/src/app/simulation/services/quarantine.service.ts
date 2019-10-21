@@ -4,7 +4,7 @@ import { PatientsDataService } from './patients-data.service';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PatientsRegister, Quarantine } from 'hospital-lib';
-import { Drug, State } from 'hospital-lib/dist/state-machine.types';
+import { Drug, State } from 'hospital-lib';
 
 
 export interface StateDiff {

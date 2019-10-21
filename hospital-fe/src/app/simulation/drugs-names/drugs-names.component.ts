@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Drug } from 'hospital-lib/dist/state-machine.types';
+import { Drug } from 'hospital-lib';
 import { possibleDrugs } from 'hospital-lib';
 
 @Component({
