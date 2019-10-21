@@ -5,11 +5,9 @@
 </button>
 <mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
 <ng-container *ngIf="history$|async as history">
-  <pre>{{history|json}}</pre>
-  <app-simulation expanded="true"></app-simulation>
-  <app-simulation></app-simulation>
-  <app-simulation></app-simulation>
-  <app-simulation></app-simulation>
-  <app-simulation></app-simulation>
-  <app-simulation></app-simulation>
+  <ng-container *ngFor="let simulation of history; let index=index">
+  <app-simulation [expanded]="!index"
+                  [simulation]="simulation"
+  ></app-simulation>
+  </ng-container>
 </ng-container>

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import {
   BeforeAfterStatistic,
-  QuarantineService,
-  Simulation
+  QuarantineService
 } from './simulation/services/quarantine.service';
 import { HistoryService } from './simulation/services/history.service';
 import { switchMapTo } from 'rxjs/operators';

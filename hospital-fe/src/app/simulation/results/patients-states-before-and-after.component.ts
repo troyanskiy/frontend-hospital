@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PatientsRegister } from 'hospital-lib';
-import { State } from 'hospital-lib/dist/state-machine.types';
-import { BeforeAfterStatistic, StateDiff } from '../services/quarantine.service';
+import { StateDiff } from '../services/quarantine.service';
 
 
 @Component({
