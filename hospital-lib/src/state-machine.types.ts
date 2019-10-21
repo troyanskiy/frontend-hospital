@@ -1,7 +1,18 @@
-export const possibleStates = ["F", "H", "D", "T", "X"] as const;
-export const possibleDrugs = ["I", "An", "P", "As"] as const;
-export type State = typeof possibleStates[number];
-export type Drug = typeof possibleDrugs[number];
+const possibleStates = {
+    F: 'Fever',
+    H: 'Healthy',
+    D: 'Diabetes',
+    T: 'Tuberculosis',
+    X: 'Dead'
+};
+const possibleDrugs = {
+    I: 'Insulin',
+    An: 'Antibiotic',
+    P: 'Paracetamol',
+    As: 'Aspirin'
+};
+export type State = keyof typeof possibleStates;
+export type Drug = keyof typeof possibleDrugs;
 export type TriggerFunction = (x: Drug[]) => boolean;
 export type Trigger = Drug[] | TriggerFunction;
 
