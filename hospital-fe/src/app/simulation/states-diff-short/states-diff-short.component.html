@@ -1,1 +1,8 @@
-D, <strong style="color: green">F</strong>, <strong style="color: red">X</strong>
+<strong *ngFor="let diff of patientStates"
+      [ngClass]="{
+        increased: diff.before<diff.after,
+        decreased: diff.before>diff.after
+      }"
+>
+  {{diff.state}}
+</strong>

@@ -1,0 +1,8 @@
+@import "~@angular/material/theming";
+
+.increased {
+  color: forestgreen;
+}
+.decreased {
+  color: darkred; //todo replace with theme variables from material
+}

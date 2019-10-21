@@ -5,7 +5,7 @@
       <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
     </mat-panel-title>
     <mat-panel-description>
-      <app-states-diff-short></app-states-diff-short>
+      <app-states-diff-short [patientStates]="simulation.patients"></app-states-diff-short>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <app-patients-states-before-and-after [patientStates]="simulation.patients"></app-patients-states-before-and-after>

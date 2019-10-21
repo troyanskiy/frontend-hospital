@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { StateDiff } from '../services/quarantine.service';
 
 @Component({
   selector: 'app-states-diff-short',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./states-diff-short.component.scss']
 })
 export class StatesDiffShortComponent implements OnInit {
+
+  @Input()
+  patientStates: StateDiff[];
 
   constructor() {
   }
