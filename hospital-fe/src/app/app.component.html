@@ -3,7 +3,7 @@
         mat-flat-button
 >New simulation
 </button>
-<mat-slide-toggle [checked]="true">Automatic</mat-slide-toggle>
+<mat-slide-toggle (change)="automaticCheckboxValueChange($event)">Automatic</mat-slide-toggle>
 <ng-container *ngIf="history$|async as history">
   <ng-container *ngFor="let simulation of history; let index=index">
   <app-simulation [expanded]="!index"
