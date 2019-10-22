@@ -2,18 +2,16 @@
                      *ngIf="simulation">
   <mat-expansion-panel-header>
     <div class="simulation-shortcuts-container">
-      <div class="drugs-container">
-        <mat-panel-title>
-          <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
-        </mat-panel-title>
-      </div>
-      <div class="stat-container">
-        <mat-panel-description>
-          <app-states-diff-short [patientStates]="simulation.patients"></app-states-diff-short>
-        </mat-panel-description>
-      </div>
+      <mat-panel-title>
+        <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
+      </mat-panel-title>
+      <mat-panel-description>
+        <app-states-diff-short [patientStates]="simulation.patients"></app-states-diff-short>
+      </mat-panel-description>
     </div>
   </mat-expansion-panel-header>
-  <app-drugs-names [drugs]="simulation.drugs" ></app-drugs-names>
-  <app-patients-states-before-and-after [patientStates]="simulation.patients"></app-patients-states-before-and-after>
+  <div class="simulation-results-container">
+    <app-patients-states-before-and-after [patientStates]="simulation.patients"></app-patients-states-before-and-after>
+    <app-drugs-names [drugs]="simulation.drugs" ></app-drugs-names>
+  </div>
 </mat-expansion-panel>
