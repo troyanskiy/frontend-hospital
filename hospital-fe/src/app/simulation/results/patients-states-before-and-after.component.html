@@ -24,7 +24,11 @@
         mat-header-cell> After
     </th>
     <td *matCellDef="let element"
-        mat-cell> {{element.after}} </td>
+        mat-cell>
+      <app-state-diff [diff]="element">
+        {{element.after}}
+      </app-state-diff>
+    </td>
   </ng-container>
 
   <tr *matHeaderRowDef="displayedColumns"
