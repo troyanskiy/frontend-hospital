@@ -1,0 +1,32 @@
+.simulation-shortcuts-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.drugs-container {
+  width: 60%;
+}
+
+.stat-container {
+  width: 40%;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 576px) {
+  .mat-expansion-panel {
+    margin-bottom: 20px;
+  }
+
+  .drugs-container {
+    width: 30%;
+  }
+
+  .stat-container {
+    width: 70%;
+  }
+}
+

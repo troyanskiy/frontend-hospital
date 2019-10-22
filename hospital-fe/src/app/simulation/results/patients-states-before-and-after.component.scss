@@ -9,6 +9,20 @@ tr.mat-header-row {
 }
 
 table {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
+}
+
+tr th, td {
+  width: 25%;
+}
+
+tr th:first-child, td:first-child {
+  width: 50%;
+}
+
+@media screen and (min-width: 576px) {
+  table {
+    width: 80%;
+  }
 }
