@@ -13,6 +13,7 @@ import { StatesDiffShortComponent } from './simulation/states-diff-short/states-
 import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.compon
     BrowserAnimationsModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

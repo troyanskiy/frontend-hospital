@@ -1,11 +1,13 @@
-<div class="container">
-  <button #newSimulationButton
-          color="primary"
-          mat-flat-button
-  >New simulation
-  </button>
-  <mat-slide-toggle #autoModeSlideToggle>Automatic
-  </mat-slide-toggle>
+<div class="simulation-container">
+  <div class="buttons-container">
+    <button #newSimulationButton
+            color="primary"
+            mat-flat-button
+    >New simulation
+    </button>
+    <mat-slide-toggle #autoModeSlideToggle>Automatic
+    </mat-slide-toggle>
+  </div>
   <ng-container *ngIf="history$ | async as history">
     <ng-container *ngFor="let simulation of history; let index=index">
       <app-simulation [expanded]="!index"
