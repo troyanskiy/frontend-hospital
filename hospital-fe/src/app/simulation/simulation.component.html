@@ -1,7 +1,6 @@
 <mat-expansion-panel [expanded]="expanded"
                      (afterCollapse)="hideSummary()"
                      (afterExpand)="showSummary()"
-                     [hideToggle]="!summaryDisplayed"
                      [togglePosition]="'before'"
                      *ngIf="simulation">
   <mat-expansion-panel-header>

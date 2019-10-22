@@ -8,14 +8,7 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA = [
-  { name: 'Hydrogen', weight: 5, symbol: 'H'},
-  { name: 'Helium', weight: 4, symbol: 'He'},
-  { name: 'Lithium', weight: 6, symbol: 'Li'},
-  { name: 'Beryllium', weight: 9, symbol: 'Be'},
-  { name: 'Boron', weight: 10, symbol: 'B'},
 
-];
 
 
 @Component({
@@ -25,8 +18,7 @@ const ELEMENT_DATA = [
 })
 export class PatientsStatesBeforeAndAfterComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: (keyof StateDiff) []  = ['state', 'before', 'after'];
 
   @Input()
   patientStates: StateDiff[];
