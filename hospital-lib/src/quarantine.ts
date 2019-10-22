@@ -1,6 +1,6 @@
 import { PatientsRegister } from './patientsRegister';
 import { StateMachine } from './state-machine';
-import { Drug, State } from './state-machine.types';
+import { Drug, Rule, State } from './state-machine.types';
 
 
 function isInsulinMissed(drugsGiven: Drug[]): boolean {
@@ -9,35 +9,37 @@ function isInsulinMissed(drugsGiven: Drug[]): boolean {
 
 type PatientStatePair = [State, number];
 
+export const defaultRules: Rule[] = [
+    {
+        sources: ['F', 'H', 'D', 'T'],
+        target: 'X',
+        triggers: [["As", "P"]]
+    }, {
+        sources: ['D'],
+        target: 'X',
+        triggers: [isInsulinMissed]
+    }, {
+        sources: ['F'],
+        target: 'H',
+        triggers: [["As"], ["P"]]
+    }, {
+        sources: ['H'],
+        target: 'F',
+        triggers: [["I", "An"]]
+    }, {
+        sources: ['D'],
+        target: 'D',
+        triggers: [["I"]]
+    }, {
+        sources: ['T'],
+        target: 'H',
+        triggers: [["An"]]
+    },
+];
+
 export class Quarantine {
 
-    stateMachine = new StateMachine([
-        {
-            sources: ['F', 'H', 'D', 'T'],
-            target: 'X',
-            triggers: [["As", "P"]]
-        }, {
-            sources: ['D'],
-            target: 'X',
-            triggers: [isInsulinMissed]
-        }, {
-            sources: ['F'],
-            target: 'H',
-            triggers: [["As"], ["P"]]
-        }, {
-            sources: ['H'],
-            target: 'F',
-            triggers: [["I", "An"]]
-        }, {
-            sources: ['D'],
-            target: 'D',
-            triggers: [["I"]]
-        }, {
-            sources: ['T'],
-            target: 'H',
-            triggers: [["An"]]
-        },
-    ]);
+    stateMachine = new StateMachine(defaultRules);
     private drugsGiven: Drug[] = [];
     private patientsAfterTreatment: PatientsRegister;
 
