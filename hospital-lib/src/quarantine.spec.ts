@@ -1,5 +1,7 @@
-import { Expect, Setup, Test, TestFixture } from 'alsatian';
+import { Expect, Setup, Test, TestCase, TestFixture } from 'alsatian';
 import { Quarantine } from './quarantine';
+import { Drug } from './state-machine.types';
+import { PatientsRegister } from './patientsRegister';
 
 @TestFixture()
 export class QuarantineTest {
@@ -104,5 +106,18 @@ export class QuarantineTest {
         Expect(this.quarantine.report()).toEqual({
             F: 0, H: 0, D: 0, T: 0, X: 7
         });
+    }
+
+    @TestCase(['I', 'P', 'As'], {
+        F: 0, H: 0, D: 0, T: 0, X: 7
+    })
+    @TestCase(['I', 'An', 'P'], {
+        F: 2, H: 2, D: 3, T: 0, X: 0
+    })
+    @Test()
+    public mixOfDrugs(drugs: Drug[], expectation: PatientsRegister): void {
+        this.quarantine.setDrugs(drugs);
+        this.quarantine.wait40Days();
+        Expect(this.quarantine.report()).toEqual(expectation);
     }
 }
