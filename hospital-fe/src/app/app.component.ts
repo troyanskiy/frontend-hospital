@@ -35,11 +35,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   setUpStartStopEvents(): Observable<void> {
-    const autoMode$ = this.autoModeSlideToggle.change;
+    const autoModeToggled$ = this.autoModeSlideToggle.change;
     const newSimulationClicks$ = fromEvent(this.newSimulationButton.nativeElement, 'click');
-    const [autoModeStartClicks$, autoModeStopClicks$] = partition((evt: MatSlideToggleChange) => evt.checked)(autoMode$);
-    const intervalThatStops$ = interval(this.automaticCalculationInterval).pipe(takeUntil(autoModeStopClicks$));
-    const autoModeStartingTrigger$ = autoModeStartClicks$.pipe(switchMapTo(intervalThatStops$));
+    const [autoModeTurnedOn$, autoModeTurnedOff$] = partition((evt: MatSlideToggleChange) => evt.checked)(autoModeToggled$);
+    const intervalThatStops$ = interval(this.automaticCalculationInterval).pipe(takeUntil(autoModeTurnedOff$));
+    const autoModeStartingTrigger$ = autoModeTurnedOn$.pipe(switchMapTo(intervalThatStops$));
     return merge<void>(newSimulationClicks$, autoModeStartingTrigger$);
   }
 

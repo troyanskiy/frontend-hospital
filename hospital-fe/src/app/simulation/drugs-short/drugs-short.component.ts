@@ -17,13 +17,12 @@ export class DrugsShortComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.drugs.length) {
-      this.drugsFormatted = this.drugs
-        .map(drugFullName => drugFullName.substring(0, 3))
-        .join(', ');
-    } else {
-      this.drugsFormatted = 'No drugs given';
-    }
+    this.drugsFormatted = this.formatDrugs();
   }
 
+  private formatDrugs(): string {
+    return this.drugs.length ? this.drugs
+      .map(drugFullName => drugFullName.substring(0, 3))
+      .join(', ') : 'No drugs given';
+  }
 }
