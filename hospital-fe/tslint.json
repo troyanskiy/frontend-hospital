@@ -1,5 +1,8 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint:recommended",
+    "rxjs-tslint-rules"
+  ],
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -71,6 +74,50 @@
       true,
       "single"
     ],
+    "rxjs-finnish": {
+      "options": [{
+        "functions": false,
+        "methods": false,
+        "parameters": true,
+        "properties": true,
+        "variables": true
+      }],
+      "severity": "warning"
+    },
+    "rxjs-no-exposed-subjects": {
+      "options": [{
+        "allowProtected": true
+      }],
+      "severity": "error"
+    },
+    "rxjs-no-unsafe-catch": {
+      "options": [{
+        "observable": "action(s|\\$)?"
+      }],
+      "severity": "error"
+    },
+    "rxjs-prefer-observer": {
+      "options": [{
+        "allowNext": true
+      }],
+      "severity": "error"
+    },
+    "rxjs-suffix-subjects": {
+      "options": [{
+        "parameters": true,
+        "properties": true,
+        "suffix": "Subject",
+        "variables": true
+      }],
+      "severity": "error"
+    },
+    "rxjs-no-create": true,
+    "rxjs-no-tap": true,
+    "rxjs-no-explicit-generics": true,
+    "rxjs-no-nested-subscribe": true,
+    "rxjs-no-ignored-subscribe": true,
+    "rxjs-no-async-subscribe": true,
+    "rxjs-no-ignored-notifier": true,
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
