@@ -10,7 +10,7 @@
         <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
       </mat-panel-title>
       <mat-panel-description>
-        <app-states-diff-short [patientStates]="simulation.patients"></app-states-diff-short>
+        <app-state-diff *ngFor="let diff of simulation.patients" [diff]="diff">{{diff.state}}</app-state-diff>
       </mat-panel-description>
     </div>
   </mat-expansion-panel-header>

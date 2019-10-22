@@ -1,8 +1,7 @@
-<strong *ngFor="let diff of patientStates"
-        [ngClass]="{
+<strong [ngClass]="{
         increased: diff.before<diff.after,
         decreased: diff.before>diff.after
       }"
 >
-  {{diff.state}}
+  <ng-content></ng-content>
 </strong>

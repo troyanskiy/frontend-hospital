@@ -9,7 +9,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SimulationComponent } from './simulation/simulation.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DrugsShortComponent } from './simulation/drugs-short/drugs-short.component';
-import { StatesDiffShortComponent } from './simulation/states-diff-short/states-diff-short.component';
+import { StatesDiffComponent } from './simulation/states-diff/states-diff.component';
 import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
@@ -20,9 +20,9 @@ import { MatTableModule } from '@angular/material/table';
     AppComponent,
     SimulationComponent,
     DrugsShortComponent,
-    StatesDiffShortComponent,
+    StatesDiffComponent,
     PatientsStatesBeforeAndAfterComponent,
-    DrugsNamesComponent
+    DrugsNamesComponent,
   ],
   imports: [
     BrowserModule,

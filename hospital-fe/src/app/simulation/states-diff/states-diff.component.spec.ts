@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatesDiffShortComponent } from './states-diff-short.component';
+import { StatesDiffComponent } from './states-diff.component';
 
 describe('StatesDiffShortComponent', () => {
-  let component: StatesDiffShortComponent;
-  let fixture: ComponentFixture<StatesDiffShortComponent>;
+  let component: StatesDiffComponent;
+  let fixture: ComponentFixture<StatesDiffComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StatesDiffShortComponent]
+      declarations: [StatesDiffComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatesDiffShortComponent);
+    fixture = TestBed.createComponent(StatesDiffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
