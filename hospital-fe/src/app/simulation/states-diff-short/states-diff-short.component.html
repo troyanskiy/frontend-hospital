@@ -1,5 +1,5 @@
 <strong *ngFor="let diff of patientStates"
-      [ngClass]="{
+        [ngClass]="{
         increased: diff.before<diff.after,
         decreased: diff.before>diff.after
       }"

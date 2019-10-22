@@ -1,10 +1,11 @@
-<mat-expansion-panel [expanded]="expanded"
-                     (afterCollapse)="hideSummary()"
+<mat-expansion-panel (afterCollapse)="hideSummary()"
                      (afterExpand)="showSummary()"
-                     [togglePosition]="'before'"
-                     *ngIf="simulation">
+                     *ngIf="simulation"
+                     [expanded]="expanded"
+                     [togglePosition]="'before'">
   <mat-expansion-panel-header>
-    <div class="simulation-shortcuts-container" *ngIf="summaryDisplayed">
+    <div *ngIf="summaryDisplayed"
+         class="simulation-shortcuts-container">
       <mat-panel-title>
         <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
       </mat-panel-title>
@@ -15,6 +16,6 @@
   </mat-expansion-panel-header>
   <div class="simulation-results-container">
     <app-patients-states-before-and-after [patientStates]="simulation.patients"></app-patients-states-before-and-after>
-    <app-drugs-names [drugs]="simulation.drugs" ></app-drugs-names>
+    <app-drugs-names [drugs]="simulation.drugs"></app-drugs-names>
   </div>
 </mat-expansion-panel>

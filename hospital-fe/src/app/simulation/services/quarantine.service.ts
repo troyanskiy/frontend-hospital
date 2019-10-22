@@ -3,8 +3,7 @@ import { DrugsService } from './drugs.service';
 import { PatientsDataService } from './patients-data.service';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PatientsRegister, Quarantine } from 'hospital-lib';
-import { Drug, State } from 'hospital-lib';
+import { Drug, PatientsRegister, Quarantine, State } from 'hospital-lib';
 
 
 export interface StateDiff {

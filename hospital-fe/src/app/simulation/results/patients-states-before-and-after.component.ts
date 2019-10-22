@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StateDiff } from '../services/quarantine.service';
 import { possibleStates } from 'hospital-lib';
+
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
 }
-
-
 
 
 @Component({
@@ -18,7 +17,7 @@ export interface PeriodicElement {
 })
 export class PatientsStatesBeforeAndAfterComponent implements OnInit {
 
-  displayedColumns: (keyof StateDiff) []  = ['state', 'before', 'after'];
+  displayedColumns: (keyof StateDiff) [] = ['state', 'before', 'after'];
 
   @Input()
   patientStates: StateDiff[];

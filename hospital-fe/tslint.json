@@ -75,40 +75,50 @@
       "single"
     ],
     "rxjs-finnish": {
-      "options": [{
-        "functions": false,
-        "methods": false,
-        "parameters": true,
-        "properties": true,
-        "variables": true
-      }],
+      "options": [
+        {
+          "functions": false,
+          "methods": false,
+          "parameters": true,
+          "properties": true,
+          "variables": true
+        }
+      ],
       "severity": "warning"
     },
     "rxjs-no-exposed-subjects": {
-      "options": [{
-        "allowProtected": true
-      }],
+      "options": [
+        {
+          "allowProtected": true
+        }
+      ],
       "severity": "error"
     },
     "rxjs-no-unsafe-catch": {
-      "options": [{
-        "observable": "action(s|\\$)?"
-      }],
+      "options": [
+        {
+          "observable": "action(s|\\$)?"
+        }
+      ],
       "severity": "error"
     },
     "rxjs-prefer-observer": {
-      "options": [{
-        "allowNext": true
-      }],
+      "options": [
+        {
+          "allowNext": true
+        }
+      ],
       "severity": "error"
     },
     "rxjs-suffix-subjects": {
-      "options": [{
-        "parameters": true,
-        "properties": true,
-        "suffix": "Subject",
-        "variables": true
-      }],
+      "options": [
+        {
+          "parameters": true,
+          "properties": true,
+          "suffix": "Subject",
+          "variables": true
+        }
+      ],
       "severity": "error"
     },
     "rxjs-no-create": true,

@@ -4,7 +4,7 @@ import { Drug, Rule, State } from './state-machine.types';
 
 
 function isInsulinMissed(drugsGiven: Drug[]): boolean {
-    return !drugsGiven.includes("I");
+    return !drugsGiven.includes('I');
 }
 
 type PatientStatePair = [State, number];
@@ -13,7 +13,7 @@ export const defaultRules: Rule[] = [
     {
         sources: ['F', 'H', 'D', 'T'],
         target: 'X',
-        triggers: [["As", "P"]]
+        triggers: [['As', 'P']]
     }, {
         sources: ['D'],
         target: 'X',
@@ -21,19 +21,19 @@ export const defaultRules: Rule[] = [
     }, {
         sources: ['F'],
         target: 'H',
-        triggers: [["As"], ["P"]]
+        triggers: [['As'], ['P']]
     }, {
         sources: ['H'],
         target: 'F',
-        triggers: [["I", "An"]]
+        triggers: [['I', 'An']]
     }, {
         sources: ['D'],
         target: 'D',
-        triggers: [["I"]]
+        triggers: [['I']]
     }, {
         sources: ['T'],
         target: 'H',
-        triggers: [["An"]]
+        triggers: [['An']]
     },
 ];
 

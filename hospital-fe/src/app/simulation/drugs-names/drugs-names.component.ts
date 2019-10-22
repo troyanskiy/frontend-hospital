@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Drug } from 'hospital-lib';
-import { possibleDrugs } from 'hospital-lib';
+import { Drug, possibleDrugs } from 'hospital-lib';
 
 @Component({
   selector: 'app-drugs-names',
