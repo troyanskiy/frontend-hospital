@@ -10,6 +10,8 @@ export class SimulationComponent implements OnInit {
   @Input()
   expanded: boolean;
 
+  summaryDisplayed: boolean = this.expanded;
+
   @Input()
   simulation: BeforeAfterStatistic;
 
@@ -17,5 +19,13 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  hideSummary() {
+    this.summaryDisplayed = true;
+  }
+
+  showSummary() {
+    this.summaryDisplayed = false;
   }
 }
