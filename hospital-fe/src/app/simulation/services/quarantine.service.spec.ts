@@ -1,4 +1,4 @@
-import { Simulation, QuarantineService } from './quarantine.service';
+import { Simulation, QuarantineService, StateDiff } from './quarantine.service';
 import { Drug, PatientsRegister } from 'hospital-lib';
 
 function testCase(patientsBefore: PatientsRegister,
@@ -23,27 +23,27 @@ describe('Patients data mapper', () => {
   }, 'empty hospital, some drugs');
   testCase({ F: 2 }, { F: 2 }, ['I', 'As'], {
     drugs: ['I', 'As'],
-    patientsStatesDiffs: [{ state: 'F', before: 2, after: 2 }]
+    patientsStatesDiffs: [{ state: 'F', numberOfPatientsBefore: 2, after: 2 }]
   }, 'one state, no differences');
   testCase({ F: 2 }, { X: 2 }, ['I', 'As'], {
     drugs: ['I', 'As'],
-    patientsStatesDiffs: [{ state: 'F', before: 2, after: 0 }, { state: 'X', before: 0, after: 2 }]
+    patientsStatesDiffs: [{ state: 'F', numberOfPatientsBefore: 2, after: 0 }, { state: 'X', numberOfPatientsBefore: 0, after: 2 }]
   }, 'one state, different state after, same amount of people');
   testCase({ F: 2, T: 4 }, { X: 6 }, ['I', 'As'], {
     drugs: ['I', 'As'],
-    patientsStatesDiffs: [{ state: 'F', before: 2, after: 0 }, {
+    patientsStatesDiffs: [{ state: 'F', numberOfPatientsBefore: 2, after: 0 }, {
       state: 'T',
-      before: 4,
+      numberOfPatientsBefore: 4,
       after: 0
-    }, { state: 'X', before: 0, after: 6 }]
+    }, { state: 'X', numberOfPatientsBefore: 0, after: 6 }]
   }, 'two states, only one new state after');
 
   it('one state in the beginning, two new states after', () => {
     const res = QuarantineService.mapToBas({ X: 6 }, { F: 2, T: 4 }, []).patientsStatesDiffs;
-    const expectationOnordered = [
-      { state: 'X', before: 6, after: 0 },
-      { state: 'T', before: 0, after: 4 },
-      { state: 'F', before: 0, after: 2 }
+    const expectationOnordered: StateDiff[] = [
+      { state: 'X', numberOfPatientsBefore: 6, after: 0 },
+      { state: 'T', numberOfPatientsBefore: 0, after: 4 },
+      { state: 'F', numberOfPatientsBefore: 0, after: 2 }
     ];
     expect(res).toEqual(jasmine.arrayContaining(expectationOnordered));
     expect(res.length).toEqual(expectationOnordered.length);
@@ -51,10 +51,10 @@ describe('Patients data mapper', () => {
 
   it('multiple states initially, after some states dissapear and some are new', () => {
     const res = QuarantineService.mapToBas({ X: 6, T: 3 }, { F: 2, T: 4 }, ['I', 'As']).patientsStatesDiffs;
-    const expectationOnordered = [
-      { state: 'F', before: 0, after: 2 },
-      { state: 'X', before: 6, after: 0 },
-      { state: 'T', before: 3, after: 4 }
+    const expectationOnordered: StateDiff[] = [
+      { state: 'F', numberOfPatientsBefore: 0, after: 2 },
+      { state: 'X', numberOfPatientsBefore: 6, after: 0 },
+      { state: 'T', numberOfPatientsBefore: 3, after: 4 }
     ];
     expect(res).toEqual(jasmine.arrayContaining(expectationOnordered));
     expect(res.length).toEqual(expectationOnordered.length);

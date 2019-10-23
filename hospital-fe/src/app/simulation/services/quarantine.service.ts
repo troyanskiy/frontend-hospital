@@ -7,7 +7,7 @@ import { Drug, PatientsRegister, Quarantine, State } from 'hospital-lib';
 
 export interface StateDiff {
   state: State;
-  before: number;
+  numberOfPatientsBefore: number;
   after: number;
 }
 
@@ -33,16 +33,16 @@ export class QuarantineService {
       delete patientsAfterCopy[beforeState];
       return {
         state: beforeState,
-        before: beforeNumber,
+        numberOfPatientsBefore: beforeNumber,
         after: afterNumber
-      };
+      } as StateDiff;
     });
     const newStatesPairs: [State, number][] = Object.entries(patientsAfterCopy) as [State, number][];
     const patients = initialStatesHistory.concat(newStatesPairs.map(([afterState, afterNumber]) => ({
         state: afterState,
-        before: patientsBefore[afterState] || 0,
+        numberOfPatientsBefore: patientsBefore[afterState] || 0,
         after: afterNumber
-      }
+      } as StateDiff
     )));
     return {
       drugs,

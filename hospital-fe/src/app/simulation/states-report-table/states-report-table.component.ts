@@ -9,7 +9,7 @@ import { possibleStates } from 'hospital-lib';
 })
 export class StatesReportTableComponent {
 
-  displayedColumns: (keyof StateDiff) [] = ['state', 'before', 'after'];
+  displayedColumns: (keyof StateDiff) [] = ['state', 'numberOfPatientsBefore', 'after'];
 
   @Input()
   patientStates: StateDiff[] = [];
