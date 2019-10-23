@@ -30,13 +30,13 @@ export class QuarantineService {
     const currentDrugs$ = this.drugsService.getDrugs();
     const currentPatients$ = this.patientDataService.getGroupedPatients();
     return forkJoin(currentDrugs$, currentPatients$).pipe(
-      (map(([drugs, patientsBefore]) => {
+      map(([drugs, patientsBefore]) => {
           const quarantine = new Quarantine(patientsBefore);
           quarantine.setDrugs(drugs);
           quarantine.wait40Days();
           return this.mapToBas(patientsBefore, quarantine.report(), drugs);
         }
-      )));
+      ));
   }
 
   private mapToBas(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {

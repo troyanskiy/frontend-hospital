@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PatientsRegister, State } from 'hospital-lib';
 import { map, share } from 'rxjs/operators';
+import { mapToArray } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,10 @@ export class PatientsDataService {
 
   getPatients(): Observable<State[]> {
     return this.http.get<string>(this.url).pipe(
-      map(this.mapToArray)
+      map(response => mapToArray<State>(response))
     );
   }
 
-  mapToArray(str: string): State[] {
-    return str.split(',').filter(x => x !== '') as State[];
-  }
 
   getGroupedPatients(): Observable<PatientsRegister> {
     return this.getPatients().pipe(

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Drug } from 'hospital-lib';
+import { Drug, State } from 'hospital-lib';
 import { environment } from '../../../environments/environment';
-import { map, share } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { mapToArray } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DrugsService {
 
   getDrugs(): Observable<Drug[]> {
     return this.http.get<string>(this.url).pipe(
-      map((response: string) => response.split(',').filter(x => x !== '') as Drug[]),
-      share());
+      map(response => mapToArray<Drug>(response)),
+    );
   }
 }
