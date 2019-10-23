@@ -5,7 +5,7 @@
                      [@.disabled]="true"
                      [togglePosition]="'before'">
   <mat-expansion-panel-header>
-    <div *ngIf="summaryDisplayed"
+    <div *ngIf="isSummaryDisplayed"
          class="simulation-shortcuts-container">
       <mat-panel-title>
         <app-drug-list [drugs]="simulation.drugs"

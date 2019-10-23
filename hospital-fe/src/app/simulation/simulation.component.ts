@@ -12,13 +12,13 @@ export class SimulationComponent {
   @Input()
   simulation: Simulation;
 
-  summaryDisplayed = this.expanded;
+  isSummaryDisplayed = this.expanded;
 
   hideSummary() {
-    this.summaryDisplayed = true;
+    this.isSummaryDisplayed = true;
   }
 
   showSummary() {
-    this.summaryDisplayed = false;
+    this.isSummaryDisplayed = false;
   }
 }

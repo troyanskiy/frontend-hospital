@@ -25,7 +25,7 @@ export class QuarantineService {
               private patientDataService: PatientsDataService) {
   }
 
-  static mapToBas(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): Simulation {
+  static mapToSimulation(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): Simulation {
     const beforePairs: [State, number][] = Object.entries(patientsBefore) as [State, number][];
     const patientsAfterCopy = { ...patientsAfter };
     const initialStatesHistory = beforePairs.map(([beforeState, beforeNumber]) => {
@@ -58,7 +58,7 @@ export class QuarantineService {
           const quarantine = new Quarantine(patientsBefore);
           quarantine.setDrugs(drugs);
           quarantine.wait40Days();
-          return QuarantineService.mapToBas(patientsBefore, quarantine.report(), drugs);
+          return QuarantineService.mapToSimulation(patientsBefore, quarantine.report(), drugs);
         }
       ));
   }
