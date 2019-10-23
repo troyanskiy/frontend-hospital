@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Drug, possibleDrugs } from 'hospital-lib';
 
 @Component({
-  selector: 'app-drugs-list',
-  templateUrl: './drugs-list.component.html',
-  styleUrls: ['./drugs-list.component.scss']
+  selector: 'app-drug-list',
+  templateUrl: './drug-list.component.html',
+  styleUrls: ['./drug-list.component.scss']
 })
-export class DrugsListComponent {
+export class DrugListComponent {
 
   @Input()
   drugs: Drug[] = [];

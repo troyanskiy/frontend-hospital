@@ -3,11 +3,11 @@ import { StateDiff } from '../services/quarantine.service';
 import { possibleStates } from 'hospital-lib';
 
 @Component({
-  selector: 'app-patients-states-before-and-after',
-  templateUrl: './patients-states-before-and-after.component.html',
-  styleUrls: ['./patients-states-before-and-after.component.scss']
+  selector: 'app-states-report-table',
+  templateUrl: './states-report-table.component.html',
+  styleUrls: ['./states-report-table.component.scss']
 })
-export class PatientsStatesBeforeAndAfterComponent {
+export class StatesReportTableComponent {
 
   displayedColumns: (keyof StateDiff) [] = ['state', 'before', 'after'];
 

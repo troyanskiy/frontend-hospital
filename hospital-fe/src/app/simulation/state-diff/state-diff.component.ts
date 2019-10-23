@@ -3,10 +3,10 @@ import { StateDiff } from '../services/quarantine.service';
 
 @Component({
   selector: 'app-state-diff',
-  templateUrl: './states-diff.component.html',
-  styleUrls: ['./states-diff.component.scss']
+  templateUrl: './state-diff.component.html',
+  styleUrls: ['./state-diff.component.scss']
 })
-export class StatesDiffComponent {
+export class StateDiffComponent {
 
   @Input()
   diff: StateDiff;

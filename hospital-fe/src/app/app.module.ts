@@ -8,9 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SimulationComponent } from './simulation/simulation.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { DrugsListComponent } from './simulation/drugs-list/drugs-list.component';
-import { StatesDiffComponent } from './simulation/states-diff/states-diff.component';
-import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
+import { DrugListComponent } from './simulation/drug-list/drug-list.component';
+import { StateDiffComponent } from './simulation/state-diff/state-diff.component';
+import { StatesReportTableComponent } from './simulation/states-report-table/states-report-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrugsPanelComponent } from './simulation/drugs-panel/drugs-panel.component';
 import { MatTableModule } from '@angular/material/table';
@@ -21,9 +21,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   declarations: [
     AppComponent,
     SimulationComponent,
-    DrugsListComponent,
-    StatesDiffComponent,
-    PatientsStatesBeforeAndAfterComponent,
+    DrugListComponent,
+    StateDiffComponent,
+    StatesReportTableComponent,
     DrugsPanelComponent,
   ],
   imports: [
