@@ -28,7 +28,7 @@ export class QuarantineService {
 
   runSimulation(): Observable<BeforeAfterStatistic> {
     const currentDrugs$ = this.drugsService.getDrugs();
-    const currentPatients$ = this.patientDataService.getGroupedPatients();
+    const currentPatients$ = this.patientDataService.getPatients();
     return forkJoin(currentDrugs$, currentPatients$).pipe(
       map(([drugs, patientsBefore]) => {
           const quarantine = new Quarantine(patientsBefore);
