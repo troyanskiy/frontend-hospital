@@ -1,7 +1,7 @@
 import { BeforeAfterStatistic, QuarantineService } from './quarantine.service';
 import { Drug, PatientsRegister } from 'hospital-lib';
 
-function generateTestCase(patientsBefore: PatientsRegister,
+function testCase(patientsBefore: PatientsRegister,
                           patientsAfter: PatientsRegister,
                           drugs: Drug[],
                           expected: BeforeAfterStatistic,
@@ -12,24 +12,24 @@ function generateTestCase(patientsBefore: PatientsRegister,
 }
 
 describe('Patients data mapper', () => {
-  generateTestCase({}, {}, [], { drugs: [], patients: [] }, 'empty hospital, no drugs');
-  generateTestCase({}, {}, ['I'], {
+  testCase({}, {}, [], { drugs: [], patients: [] }, 'empty hospital, no drugs');
+  testCase({}, {}, ['I'], {
     drugs: ['I'],
     patients: []
   }, 'empty hospital, one drug');
-  generateTestCase({}, {}, ['I', 'As'], {
+  testCase({}, {}, ['I', 'As'], {
     drugs: ['I', 'As'],
     patients: []
   }, 'empty hospital, some drugs');
-  generateTestCase({ F: 2 }, { F: 2 }, ['I', 'As'], {
+  testCase({ F: 2 }, { F: 2 }, ['I', 'As'], {
     drugs: ['I', 'As'],
     patients: [{ state: 'F', before: 2, after: 2 }]
   }, 'one state, no differences');
-  generateTestCase({ F: 2 }, { X: 2 }, ['I', 'As'], {
+  testCase({ F: 2 }, { X: 2 }, ['I', 'As'], {
     drugs: ['I', 'As'],
     patients: [{ state: 'F', before: 2, after: 0 }, { state: 'X', before: 0, after: 2 }]
   }, 'one state, different state after, same amount of people');
-  generateTestCase({ F: 2, T: 4 }, { X: 6 }, ['I', 'As'], {
+  testCase({ F: 2, T: 4 }, { X: 6 }, ['I', 'As'], {
     drugs: ['I', 'As'],
     patients: [{ state: 'F', before: 2, after: 0 }, {
       state: 'T',
