@@ -12,7 +12,7 @@ import { DrugsListComponent } from './simulation/drugs-list/drugs-list.component
 import { StatesDiffComponent } from './simulation/states-diff/states-diff.component';
 import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
+import { DrugsPanelComponent } from './simulation/drugs-panel/drugs-panel.component';
 import { MatTableModule } from '@angular/material/table';
 import { GlobalErrorHandler } from './global-error-handler';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -24,7 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DrugsListComponent,
     StatesDiffComponent,
     PatientsStatesBeforeAndAfterComponent,
-    DrugsNamesComponent,
+    DrugsPanelComponent,
   ],
   imports: [
     BrowserModule,

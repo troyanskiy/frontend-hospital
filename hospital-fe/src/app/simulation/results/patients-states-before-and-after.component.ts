@@ -12,7 +12,7 @@ export class PatientsStatesBeforeAndAfterComponent {
   displayedColumns: (keyof StateDiff) [] = ['state', 'before', 'after'];
 
   @Input()
-  patientStates: StateDiff[];
+  patientStates: StateDiff[] = [];
 
   patientStatesFullNames = possibleStates;
 

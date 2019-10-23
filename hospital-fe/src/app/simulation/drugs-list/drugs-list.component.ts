@@ -9,10 +9,10 @@ import { Drug, possibleDrugs } from 'hospital-lib';
 export class DrugsListComponent {
 
   @Input()
-  drugs: Drug[];
+  drugs: Drug[] = [];
 
   @Input()
-  isInline: boolean;
+  isInline = false;
 
   possibleDrugs = possibleDrugs;
 }

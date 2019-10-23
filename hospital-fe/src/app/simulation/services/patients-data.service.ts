@@ -16,19 +16,23 @@ export class PatientsDataService {
 
   getPatients(): Observable<State[]> {
     return this.http.get<string>(this.url).pipe(
-      map((response: string) => response.split(',').filter(x => x !== '') as State[]));
+      map(this.mapToArray)
+    );
+  }
+
+  mapToArray(str: string): State[] {
+    return str.split(',').filter(x => x !== '') as State[];
   }
 
   getGroupedPatients(): Observable<PatientsRegister> {
     return this.getPatients().pipe(
-      map(states => {
-        return states.reduce((acc, state) => {
+      map(states =>
+        states.reduce((acc, state) => {
           return {
             ...acc,
             [state]: acc[state] ? acc[state] + 1 : 1
           };
-        }, {});
-      }),
+        }, {} as PatientsRegister)),
       share());
   }
 }

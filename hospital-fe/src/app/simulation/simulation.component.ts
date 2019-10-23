@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BeforeAfterStatistic } from './services/quarantine.service';
 
 @Component({
@@ -8,12 +8,11 @@ import { BeforeAfterStatistic } from './services/quarantine.service';
 })
 export class SimulationComponent {
   @Input()
-  expanded: boolean;
-
-  summaryDisplayed: boolean = this.expanded;
-
+  expanded = false;
   @Input()
   simulation: BeforeAfterStatistic;
+
+  summaryDisplayed = this.expanded;
 
   hideSummary() {
     this.summaryDisplayed = true;
