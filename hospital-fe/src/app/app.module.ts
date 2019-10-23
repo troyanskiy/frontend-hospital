@@ -8,20 +8,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SimulationComponent } from './simulation/simulation.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { DrugsShortComponent } from './simulation/drugs-short/drugs-short.component';
+import { DrugsListComponent } from './simulation/drugs-list/drugs-list.component';
 import { StatesDiffComponent } from './simulation/states-diff/states-diff.component';
 import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/patients-states-before-and-after.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
 import { MatTableModule } from '@angular/material/table';
 import { GlobalErrorHandler } from './global-error-handler';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimulationComponent,
-    DrugsShortComponent,
+    DrugsListComponent,
     StatesDiffComponent,
     PatientsStatesBeforeAndAfterComponent,
     DrugsNamesComponent,

@@ -2,14 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Drug, possibleDrugs } from 'hospital-lib';
 
 @Component({
-  selector: 'app-drugs-short',
-  templateUrl: './drugs-short.component.html',
-  styleUrls: ['./drugs-short.component.scss']
+  selector: 'app-drugs-list',
+  templateUrl: './drugs-list.component.html',
+  styleUrls: ['./drugs-list.component.scss']
 })
-export class DrugsShortComponent {
+export class DrugsListComponent {
 
   @Input()
   drugs: Drug[];
+
+  @Input()
+  isInline: boolean;
 
   possibleDrugs = possibleDrugs;
 }

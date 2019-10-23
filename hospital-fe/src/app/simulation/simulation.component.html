@@ -8,7 +8,9 @@
     <div *ngIf="summaryDisplayed"
          class="simulation-shortcuts-container">
       <mat-panel-title>
-        <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
+        <app-drugs-list [drugs]="simulation.drugs"
+                        [isInline]="true"
+        ></app-drugs-list>
       </mat-panel-title>
       <mat-panel-description>
         <app-state-diff *ngFor="let diff of simulation.patients"
