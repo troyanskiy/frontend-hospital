@@ -26,20 +26,7 @@ export class QuarantineService {
               private patientDataService: PatientsDataService) {
   }
 
-  runSimulation(): Observable<BeforeAfterStatistic> {
-    const currentDrugs$ = this.drugsService.getDrugs();
-    const currentPatients$ = this.patientDataService.getPatients();
-    return forkJoin(currentDrugs$, currentPatients$).pipe(
-      map(([drugs, patientsBefore]) => {
-          const quarantine = new Quarantine(patientsBefore);
-          quarantine.setDrugs(drugs);
-          quarantine.wait40Days();
-          return this.mapToBas(patientsBefore, quarantine.report(), drugs);
-        }
-      ));
-  }
-
-  private mapToBas(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {
+  static mapToBas(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {
     const beforePairs: [State, number][] = Object.entries(patientsBefore) as [State, number][];
     const patientsAfterCopy = { ...patientsAfter };
     const initialStatesHistory = beforePairs.map(([beforeState, beforeNumber]) => {
@@ -62,5 +49,18 @@ export class QuarantineService {
       drugs,
       patients
     };
+  }
+
+  runSimulation(): Observable<BeforeAfterStatistic> {
+    const currentDrugs$ = this.drugsService.getDrugs();
+    const currentPatients$ = this.patientDataService.getPatients();
+    return forkJoin(currentDrugs$, currentPatients$).pipe(
+      map(([drugs, patientsBefore]) => {
+          const quarantine = new Quarantine(patientsBefore);
+          quarantine.setDrugs(drugs);
+          quarantine.wait40Days();
+          return QuarantineService.mapToBas(patientsBefore, quarantine.report(), drugs);
+        }
+      ));
   }
 }
