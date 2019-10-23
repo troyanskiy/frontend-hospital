@@ -22,13 +22,12 @@ export class PatientsDataService {
   getGroupedPatients(): Observable<PatientsRegister> {
     return this.getPatients().pipe(
       map(states => {
-        const reduced = states.reduce((acc, state) => {
+        return states.reduce((acc, state) => {
           return {
             ...acc,
             [state]: acc[state] ? acc[state] + 1 : 1
           };
         }, {});
-        return reduced;
       }),
       share());
   }

@@ -1,14 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StateDiff } from '../services/quarantine.service';
 import { possibleStates } from 'hospital-lib';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 
 @Component({
   selector: 'app-patients-states-before-and-after',
