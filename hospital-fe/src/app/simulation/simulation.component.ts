@@ -6,7 +6,7 @@ import { BeforeAfterStatistic } from './services/quarantine.service';
   templateUrl: './simulation.component.html',
   styleUrls: ['./simulation.component.scss']
 })
-export class SimulationComponent implements OnInit {
+export class SimulationComponent {
   @Input()
   expanded: boolean;
 
@@ -14,12 +14,6 @@ export class SimulationComponent implements OnInit {
 
   @Input()
   simulation: BeforeAfterStatistic;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
   hideSummary() {
     this.summaryDisplayed = true;

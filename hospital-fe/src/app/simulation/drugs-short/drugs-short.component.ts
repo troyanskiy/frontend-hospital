@@ -12,9 +12,6 @@ export class DrugsShortComponent implements OnInit {
 
   drugsFormatted: string;
 
-  constructor() {
-  }
-
   ngOnInit() {
     this.drugsFormatted = this.formatDrugs();
   }

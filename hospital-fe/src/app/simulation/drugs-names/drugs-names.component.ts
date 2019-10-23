@@ -14,9 +14,6 @@ export class DrugsNamesComponent implements OnInit {
 
   possibleDrugs = possibleDrugs;
 
-  constructor() {
-  }
-
   ngOnInit() {
     this.drugsFullNames = this.drugs.map(drug => possibleDrugs[drug]).join(', '); //fixme turn into pipe + ngFor
   }
