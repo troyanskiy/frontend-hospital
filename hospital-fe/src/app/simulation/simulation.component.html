@@ -13,7 +13,7 @@
         ></app-drug-list>
       </mat-panel-title>
       <mat-panel-description>
-        <app-state-diff *ngFor="let diff of simulation.patients"
+        <app-state-diff *ngFor="let diff of simulation.patientsStatesDiffs"
                         [diff]="diff">
           {{diff.state}}
         </app-state-diff>
@@ -21,7 +21,7 @@
     </div>
   </mat-expansion-panel-header>
   <div class="simulation-results-container">
-    <app-states-report-table [patientStates]="simulation.patients"></app-states-report-table>
+    <app-states-report-table [patientStates]="simulation.patientsStatesDiffs"></app-states-report-table>
     <app-drugs-panel [drugs]="simulation.drugs"
                      class="mat-elevation-z8"
     ></app-drugs-panel>

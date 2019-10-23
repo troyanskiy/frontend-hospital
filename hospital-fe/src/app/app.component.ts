@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { fromEvent, interval, merge, Observable } from 'rxjs';
 import {
-  BeforeAfterStatistic,
+  Simulation,
   QuarantineService
 } from './simulation/services/quarantine.service';
 import { HistoryService } from './simulation/services/history.service';
@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent implements AfterViewInit {
 
-  history$: Observable<BeforeAfterStatistic[]>;
+  history$: Observable<Simulation[]>;
 
   automaticCalculationInterval = environment.defaultAutoModeInterval;
 
@@ -35,7 +35,7 @@ export class AppComponent implements AfterViewInit {
     this.history$ = this.historyService.getHistory(result$);
   }
 
-  setUpStartStopEvents(): Observable<unknown> {
+  private setUpStartStopEvents(): Observable<unknown> {
     const autoModeSwitchedOn$ = interval(this.automaticCalculationInterval).pipe(
       filter(() => this.autoModeSlideToggle.checked),
     );

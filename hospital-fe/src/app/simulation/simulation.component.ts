@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BeforeAfterStatistic } from './services/quarantine.service';
+import { Simulation } from './services/quarantine.service';
 
 @Component({
   selector: 'app-simulation',
@@ -10,7 +10,7 @@ export class SimulationComponent {
   @Input()
   expanded = false;
   @Input()
-  simulation: BeforeAfterStatistic;
+  simulation: Simulation;
 
   summaryDisplayed = this.expanded;
 
