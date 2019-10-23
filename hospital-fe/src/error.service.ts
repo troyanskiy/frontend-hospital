@@ -1,8 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-export const duration = 3000;
-
 @Injectable({
   providedIn: 'root'
 })
