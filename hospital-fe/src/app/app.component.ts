@@ -7,6 +7,7 @@ import {
 import { HistoryService } from './simulation/services/history.service';
 import { filter, switchMapTo } from 'rxjs/operators';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements AfterViewInit {
 
   history$: Observable<BeforeAfterStatistic[]>;
 
-  automaticCalculationInterval = 1000;
+  automaticCalculationInterval = environment.defaultAutoModeInterval;
 
   @ViewChild('newSimulationButton', { static: false, read: ElementRef })
   newSimulationButton: ElementRef;

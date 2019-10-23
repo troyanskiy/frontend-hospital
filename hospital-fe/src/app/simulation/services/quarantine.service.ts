@@ -5,7 +5,6 @@ import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Drug, PatientsRegister, Quarantine, State } from 'hospital-lib';
 
-
 export interface StateDiff {
   state: State;
   before: number;

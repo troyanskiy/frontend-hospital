@@ -16,7 +16,7 @@ describe('HistoryService', () => {
 
   it('should make history out of one item', () => {
     const dataSource$ = cold('x-', { x: 'item1' });
-    const result$ = historyService.getHistory(dataSource$, 10);
+    const result$ = historyService.getHistory(dataSource$, );
     const expected$ = cold('x-', { x: ['item1'] });
     expect(result$).toBeObservable(expected$);
   });
@@ -27,7 +27,7 @@ describe('HistoryService', () => {
       y: 'item2',
       z: 'item3'
     });
-    const result$ = historyService.getHistory(dataSource$, 10);
+    const result$ = historyService.getHistory(dataSource$, );
     const expected$ = cold('x-y-z', {
       x: ['item1'],
       y: ['item2', 'item1'],
