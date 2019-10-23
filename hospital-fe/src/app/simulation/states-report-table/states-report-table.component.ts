@@ -12,8 +12,8 @@ export class StatesReportTableComponent {
   displayedColumns: (keyof StateDiff) [] = ['state', 'numberOfPatientsBefore', 'numberOfPatientsAfter'];
 
   @Input()
-  patientStates: StateDiff[] = [];
+  statesDiffs: StateDiff[] = [];
 
-  patientStatesFullNames = possibleStates;
+  statesFullNames = possibleStates;
 
 }

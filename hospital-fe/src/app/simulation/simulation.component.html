@@ -21,7 +21,7 @@
     </div>
   </mat-expansion-panel-header>
   <div class="simulation-results-container">
-    <app-states-report-table [patientStates]="simulation.patientsStatesDiffs"></app-states-report-table>
+    <app-states-report-table [statesDiffs]="simulation.patientsStatesDiffs"></app-states-report-table>
     <app-drugs-panel [drugs]="simulation.drugs"
                      class="mat-elevation-z8"
     ></app-drugs-panel>
