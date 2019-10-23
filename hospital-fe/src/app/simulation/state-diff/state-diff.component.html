@@ -1,6 +1,6 @@
 <strong [ngClass]="{
-        increased: diff.numberOfPatientsBefore<diff.after,
-        decreased: diff.numberOfPatientsBefore>diff.after
+        increased: diff.numberOfPatientsBefore<diff.numberOfPatientsAfter,
+        decreased: diff.numberOfPatientsBefore>diff.numberOfPatientsAfter
       }"
 >
   <ng-content></ng-content>

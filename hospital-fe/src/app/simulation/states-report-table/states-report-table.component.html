@@ -19,14 +19,14 @@
         mat-cell> {{element.numberOfPatientsBefore}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="after">
+  <ng-container matColumnDef="numberOfPatientsAfter">
     <th *matHeaderCellDef
         mat-header-cell> After
     </th>
     <td *matCellDef="let element"
         mat-cell>
       <app-state-diff [diff]="element">
-        {{element.after}}
+        {{element.numberOfPatientsAfter}}
       </app-state-diff>
     </td>
   </ng-container>
