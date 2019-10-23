@@ -1,1 +1,9 @@
-{{drugsFormatted}}
+<ul *ngIf="drugs && drugs.length; else noDrugsGivenPlaceholder">
+  <li *ngFor="let drug of drugs; last as isLast">
+    {{possibleDrugs[drug]}}<span *ngIf="!isLast">,</span>
+  </li>
+</ul>
+<ng-template #noDrugsGivenPlaceholder>
+  No treatment
+</ng-template>
+
