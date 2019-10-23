@@ -2,6 +2,7 @@
                      (afterExpand)="showSummary()"
                      *ngIf="simulation"
                      [expanded]="expanded"
+                     [@.disabled]="true"
                      [togglePosition]="'before'">
   <mat-expansion-panel-header>
     <div *ngIf="summaryDisplayed"
@@ -10,7 +11,10 @@
         <app-drugs-short [drugs]="simulation.drugs"></app-drugs-short>
       </mat-panel-title>
       <mat-panel-description>
-        <app-state-diff *ngFor="let diff of simulation.patients" [diff]="diff">{{diff.state}}</app-state-diff>
+        <app-state-diff *ngFor="let diff of simulation.patients"
+                        [diff]="diff">
+          {{diff.state}}
+        </app-state-diff>
       </mat-panel-description>
     </div>
   </mat-expansion-panel-header>

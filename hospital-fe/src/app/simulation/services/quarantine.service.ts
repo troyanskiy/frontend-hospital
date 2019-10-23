@@ -34,12 +34,12 @@ export class QuarantineService {
           const quarantine = new Quarantine(patientsBefore);
           quarantine.setDrugs(drugs);
           quarantine.wait40Days();
-          return this.mapToBasArray(patientsBefore, quarantine.report(), drugs);
+          return this.mapToBas(patientsBefore, quarantine.report(), drugs);
         }
       )));
   }
 
-  private mapToBasArray(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {
+  private mapToBas(patientsBefore: PatientsRegister, patientsAfter: PatientsRegister, drugs: Drug[]): BeforeAfterStatistic {
     const beforePairs: [State, number][] = Object.entries(patientsBefore) as [State, number][];
     const patientsAfterCopy = { ...patientsAfter };
     const initialStatesHistory = beforePairs.map(([beforeState, beforeNumber]) => {
