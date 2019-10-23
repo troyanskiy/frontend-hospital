@@ -4,7 +4,6 @@ import { Drug } from 'hospital-lib';
 @Component({
   selector: 'app-drugs-short',
   templateUrl: './drugs-short.component.html',
-  styleUrls: ['./drugs-short.component.scss']
 })
 export class DrugsShortComponent implements OnInit {
 
@@ -20,6 +19,7 @@ export class DrugsShortComponent implements OnInit {
     this.drugsFormatted = this.formatDrugs();
   }
 
+  //fixme convert to pipe
   private formatDrugs(): string {
     return this.drugs.length ? this.drugs
       .map(drugFullName => drugFullName.substring(0, 3))

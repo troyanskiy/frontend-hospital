@@ -15,7 +15,7 @@ export interface PeriodicElement {
   templateUrl: './patients-states-before-and-after.component.html',
   styleUrls: ['./patients-states-before-and-after.component.scss']
 })
-export class PatientsStatesBeforeAndAfterComponent implements OnInit {
+export class PatientsStatesBeforeAndAfterComponent {
 
   displayedColumns: (keyof StateDiff) [] = ['state', 'before', 'after'];
 
@@ -23,11 +23,5 @@ export class PatientsStatesBeforeAndAfterComponent implements OnInit {
   patientStates: StateDiff[];
 
   patientStatesFullNames = possibleStates;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
 }

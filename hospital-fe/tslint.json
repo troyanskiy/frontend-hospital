@@ -1,7 +1,8 @@
 {
   "extends": [
     "tslint:recommended",
-    "rxjs-tslint-rules"
+    "rxjs-tslint-rules",
+    "tslint-clean-code"
   ],
   "rules": {
     "angular-whitespace": [
@@ -103,7 +104,6 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
-    "no-unnecessary-constructor"
     "no-unused-expression": true,
     "no-var-keyword": true,
     "no-var-requires": false,
