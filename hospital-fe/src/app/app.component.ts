@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { fromEvent, interval, merge, Observable, of } from 'rxjs';
+import { fromEvent, interval, merge, Observable } from 'rxjs';
 import {
   BeforeAfterStatistic,
   QuarantineService
