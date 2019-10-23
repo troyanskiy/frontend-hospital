@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { PatientsStatesBeforeAndAfterComponent } from './simulation/results/pati
 import { HttpClientModule } from '@angular/common/http';
 import { DrugsNamesComponent } from './simulation/drugs-names/drugs-names.component';
 import { MatTableModule } from '@angular/material/table';
+import { GlobalErrorHandler } from './global-error-handler';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,15 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
