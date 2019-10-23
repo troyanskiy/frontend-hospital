@@ -103,6 +103,7 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
+    "no-unnecessary-constructor"
     "no-unused-expression": true,
     "no-var-keyword": true,
     "no-var-requires": false,
