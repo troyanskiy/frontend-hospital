@@ -29,15 +29,15 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const result$ = this.setUpStartStopEvents().pipe(switchMapTo(this.quarantineService.runSimulation()));
-    this.history$ = this.historyService.getHistory(result$);
+    this.history$ = this.historyService.getReverseChronologicalHistory(result$);
   }
 
   private setUpStartStopEvents(): Observable<unknown> {
-    const autoModeSwitchedOn$ = interval(this.automaticCalculationInterval).pipe(
+    const autoModeTicks$ = interval(this.automaticCalculationInterval).pipe(
       filter(() => this.autoModeSlideToggle.checked),
     );
     const newSimulationClicks$ = fromEvent(this.newSimulationButton.nativeElement, 'click');
-    return merge<unknown>(newSimulationClicks$, autoModeSwitchedOn$);
+    return merge<unknown>(newSimulationClicks$, autoModeTicks$);
   }
 
 }
