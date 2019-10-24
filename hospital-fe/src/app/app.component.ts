@@ -1,9 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { fromEvent, interval, merge, Observable } from 'rxjs';
-import {
-  Simulation,
-  QuarantineService
-} from './simulation/services/quarantine.service';
+import { QuarantineService, Simulation } from './simulation/services/quarantine.service';
 import { HistoryService } from './simulation/services/history.service';
 import { filter, switchMapTo } from 'rxjs/operators';
 import { MatSlideToggle } from '@angular/material/slide-toggle';

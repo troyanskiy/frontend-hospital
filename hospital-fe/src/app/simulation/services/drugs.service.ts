@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Drug, State } from 'hospital-lib';
+import { Drug } from 'hospital-lib';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { mapToArray } from './utils';

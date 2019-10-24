@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PatientsRegister, State } from 'hospital-lib';
-import { map, share } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { mapToArray } from './utils';
 
 

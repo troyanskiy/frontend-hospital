@@ -1,4 +1,4 @@
-import { Simulation, QuarantineService, StateDiff } from './quarantine.service';
+import { QuarantineService, Simulation, StateDiff } from './quarantine.service';
 import { Drug, PatientsRegister } from 'hospital-lib';
 
 function testCase(patientsBefore: PatientsRegister,
