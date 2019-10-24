@@ -25,7 +25,7 @@ export class HistoryService {
           res.pop();
         }
         return res;
-      }, [])
+      }, [] as T[])
     );
   }
 }
